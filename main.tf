@@ -1,20 +1,16 @@
-resource "aws_s3_bucket" "demo" {
-  bucket = "automated-demo-bucket-ronie-123"
+resource "aws_instance" "example" {
+  ami           = "ami-0cae6d6fe6048ca2c"
+  instance_type = "t2.micro"
+
+  vpc_security_group_ids  = ["sg-0021285b1c2771d95"]
+
+  root_block_device {
+    volume_size = 8
+    volume_type = "gp2"
+    delete_on_termination = true
+  }
+
   tags = {
-    Name        = "demo-bucket"
-    Environment = "dev"
-    Owner       = "ronie"
+    Name = "example-instance-1"
   }
 }
-
-output "s3_bucket_name" {
-  value       = aws_s3_bucket.demo.id
-  description = "The name (id) of the created S3 bucket"
-}
-
-output "s3_bucket_arn" {
-  value       = aws_s3_bucket.demo.arn
-  description = "The ARN of the created S3 bucket"
-}
-
-
