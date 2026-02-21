@@ -7,6 +7,7 @@ Single-page personal portfolio for a DevOps Engineer, built with Next.js App Rou
 ```bash
 npm install
 npm run dev
+npm install -D autoprefixer postcss tailwindcss
 ```
 
 Then open `http://localhost:3000`.
